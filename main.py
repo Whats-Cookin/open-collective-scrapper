@@ -1,9 +1,15 @@
+import os
 import json
 import requests
 from lib.pipe import return_query, create_csv_header, to_csv
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN=os.getenv('TOKEN')
 
 url = 'https://api.opencollective.com/graphql/v2'
-headers = {'Content-Type': 'application/json', 'Personal-Token': 'a29146966d0ac3d659409521a04b58363772cae1'}
+headers = {'Content-Type': 'application/json', 'Personal-Token': TOKEN}
 
 def fetch_result(query):
     payload = {'query': query}
